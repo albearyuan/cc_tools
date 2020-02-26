@@ -47,6 +47,9 @@ class CCMapTitleField(CCField):
         title_bytes += b'\x00'
         return title_bytes
 
+    @property
+    def type_val(self):
+        return 3
 
 class CCCoordinate:
     """A class defining a single coordinate
@@ -210,6 +213,10 @@ class CCEncodedPasswordField(CCField):
         password_bytes += b'\x00'
         return password_bytes
 
+    @property
+    def type_val(self):
+        return 6
+
 
 class CCMapHintField(CCField):
     """A class defining a hint
@@ -234,6 +241,10 @@ class CCMapHintField(CCField):
         hint_bytes += self.hint.encode("ascii")
         hint_bytes += b'\x00'
         return hint_bytes
+
+    @property
+    def type_val(self):
+        return 7
 
 
 ##HERE FOR REFERNECE, BUT NOT SUPPORTED
@@ -291,6 +302,10 @@ class CCMonsterMovementField(CCField):
             byte_value += monster.x.to_bytes(1, BYTE_ORDER)
             byte_value += monster.y.to_bytes(1, BYTE_ORDER)
         return byte_value
+
+    @property
+    def type_val(self):
+        return 10
 
 
 class CCLevel:
@@ -363,4 +378,3 @@ class CCLevelPack:
 
     def add_level(self, level):
         self.levels.append(level)
-
